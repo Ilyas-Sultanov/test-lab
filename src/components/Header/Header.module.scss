@@ -1,0 +1,46 @@
+@use '../../styles/abstracts/' as *;
+
+.header {
+  padding: 28px 0;
+  display: flex;
+  justify-content: space-between;
+  color: $white;
+  position: relative;
+}
+
+.nav {
+  display: flex;
+  column-gap: 24px;
+
+  .link {
+    text-decoration: none;
+    color: $white;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @include md {
+    display: none;
+  }
+}
+
+.burgerBtn {
+  width: 62px;
+  height: 62px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  opacity: 0;
+  cursor: pointer;
+  pointer-events: none;
+  position: absolute;
+  right: -8px;
+  top: 10px;
+
+  @include md {
+    opacity: 1;
+    pointer-events: initial;
+  }
+}
