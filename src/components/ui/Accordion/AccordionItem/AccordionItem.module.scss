@@ -1,0 +1,86 @@
+@use '../../../../styles/abstracts/' as *;
+
+$transition-duration: 0.3s;
+
+.accordionItem {
+  border-top: 1px solid $light-gray;
+  margin-bottom: 1rem;
+
+  .btn {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    padding-top: 2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 20px;
+  }
+
+  .label {
+    font-size: 1.125rem;
+    line-height: 2rem;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+
+  .icon {
+    flex-shrink: 0;
+    stroke: $black;
+    transition-duration: $transition-duration;
+    margin-bottom: 1rem;
+  }
+  
+  .contentBox {
+    display: grid;
+    overflow: hidden;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: all $transition-duration;
+    padding-right: 3rem;
+  }
+  
+  .content {
+    overflow: hidden;
+    font-size: 1.125rem;
+    line-height: 2rem;
+    text-align: left;
+
+    @include sm {
+      font-size: 1rem;
+    }
+  }
+
+  &:hover {
+    .btn {
+      color: $primary;
+    }
+
+    .icon {
+      stroke: $primary;
+
+      & > path {
+        stroke: $primary;
+      }
+    }
+
+    .content {
+      color: $primary;
+    }
+  }
+
+  &.expanded {
+    .contentBox {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+
+    .icon {
+      transform-origin: center;
+      transform: rotate(45deg);
+    }
+  }
+}

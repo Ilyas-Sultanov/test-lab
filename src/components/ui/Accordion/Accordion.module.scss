@@ -1,0 +1,9 @@
+@use '../../../styles/abstracts/' as *;
+
+.accordion {
+  padding: 0 100px;
+
+  @include md {
+    padding: 0;
+  }
+}

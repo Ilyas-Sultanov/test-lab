@@ -1,0 +1,99 @@
+@use '../../../styles/abstracts/' as *;
+
+.slider {
+  padding: 0 14px;
+
+  @include md {
+    padding: 0;
+  }
+
+  @include breakpoint(910px) {
+    margin: 0 0;
+  }
+
+  button.slick-arrow {
+    height: 92%;
+    top: 50%;
+    transform: translateY(-53%);
+    
+    &:focus-visible {
+      outline: 1px solid $black;
+    }
+
+    &::before {
+      display: none;
+    }
+
+    & svg {
+      fill: $mid-gray;
+    }
+
+    &:hover svg {
+      fill: $primary;
+    }
+
+    &.slick-prev {
+      @include breakpoint(1200px) {
+        left: 0;
+      }
+    }
+
+    &.slick-next {
+      @include breakpoint(1200px) {
+        right: 0;
+      }
+    }
+  }
+
+  .slick-list {
+    height: 100%;
+  }
+
+  .slick-track {
+    display: flex !important;
+    align-items: stretch;
+    height: 100%;
+
+    @include md {
+      height: initial;
+    }
+
+    @include breakpoint(767px) {
+      align-items: flex-start;
+      transition: height 0.3s ease;
+    }
+  }
+
+  .slick-slide {
+    height: initial;
+
+    & > div {
+      height: 100%;
+    }
+  }
+
+  .slick-active .slider-dot {
+    background-color: $primary;
+  }
+
+  .slick-dots {
+    left: 7px;
+  }
+
+  .slider-dot {
+    border: none;
+    background-color: transparent;
+    width: 8px;
+    height: 8px;
+    background-color: $mid-gray;
+    border-radius: 50%;
+
+    &:focus-visible {
+      outline: 1px solid $black;
+    }
+
+    &::before {
+      display: none;
+    }
+  }
+}

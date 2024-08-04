@@ -1,0 +1,32 @@
+@use '../../../styles/abstracts/' as *;
+
+.label {
+  border-radius: $border-radius;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  column-gap: 16px;
+  color: $black;
+  cursor: pointer;
+
+  input[type='checkbox'] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    @include shadow-border($color: $mid-gray);
+  }
+
+  &:has(input:checked) {
+    .icon {
+      @include shadow-border();
+      background-image: url('../../../assets/images/checkbox-checked.svg');
+    }
+  }
+}
