@@ -1,0 +1,19 @@
+@use '../../../styles/abstracts/' as *;
+
+.reviews {
+  padding: 57px 0 45px 0;
+  background-color: $extra-light-gray;
+
+  @include md {
+    padding: 33px 0 45px 0;
+  }
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 32px;
+
+  @include sm {
+    margin-bottom: 26px;
+  }
+}
