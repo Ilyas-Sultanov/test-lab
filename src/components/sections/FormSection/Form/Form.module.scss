@@ -1,0 +1,25 @@
+@use './../../../../styles/abstracts/' as *;
+
+.form {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 384px));
+  grid-template-rows: max-content;
+  column-gap: 32px;
+  row-gap: 30px;
+  align-items: start;
+
+  @include breakpoint(767px) {
+    grid-template-columns: minmax(0, 384px);
+  }
+}
+
+.textField,
+.checkbox,
+.btn {
+  grid-column: span 1;  
+}
+
+.error {
+  color: $danger;
+}

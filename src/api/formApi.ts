@@ -1,3 +1,4 @@
+import { FormFields } from '@/components/sections/FormSection/Form/Form'
 import { baseApi } from './api'
 
 export const formApi = baseApi.injectEndpoints({

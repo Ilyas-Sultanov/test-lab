@@ -1,0 +1,20 @@
+@use '../../../styles/abstracts/' as *;
+
+.formSection {
+  background-color: $white;
+  padding: 80px 0;
+
+  @include md {
+    padding: 56px 0;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 44px;
+}
+
+.title {
+  text-align: center;
+}
