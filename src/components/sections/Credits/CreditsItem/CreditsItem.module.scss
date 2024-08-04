@@ -1,0 +1,17 @@
+.creditsItem {
+  display: flex;
+  flex-direction: column;
+  row-gap: 17px;
+  grid-column: span 1;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1rem;
+}
+
+.text {
+  font-size: 1rem;
+  line-height: 1.75rem;
+}

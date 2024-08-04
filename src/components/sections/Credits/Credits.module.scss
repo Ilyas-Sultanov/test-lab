@@ -1,0 +1,21 @@
+@use '../../../styles/abstracts/' as *;
+
+.credits {
+  padding: 68px 0;
+  background-color: $extra-light-gray;
+  
+  @include md {
+    padding: 20px 0;
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 32px;
+  row-gap: 37px;
+
+  @include md {
+    grid-template-columns: 1fr;
+  }
+}
