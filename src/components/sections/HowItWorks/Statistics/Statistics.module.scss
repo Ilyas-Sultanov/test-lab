@@ -1,0 +1,53 @@
+@use '../../../../styles/abstracts/' as *;
+
+.statistics {
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: 32px;
+  @include md {
+    column-gap: 24px;
+  }
+  @include breakpoint(767px) {
+    flex-direction: column-reverse;
+    row-gap: 7px;
+  }
+}
+
+.textBlock {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @include sm {
+    text-align: center;
+  }
+
+  .title {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin-bottom: 18px;
+    @include md {
+      font-size: 1.25rem;
+      line-height: 1.5rem;
+    }
+  }
+
+  .text {
+    line-height: 1.75rem;
+    color: $dark-gray;
+
+    &:first-of-type {
+      margin-bottom: 35px;
+    }
+  }
+}
+
+.imgBlock {
+  flex: 1 1 0%;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}

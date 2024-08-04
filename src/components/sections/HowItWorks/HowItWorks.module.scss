@@ -1,0 +1,32 @@
+@use '../../../styles/abstracts/' as *;
+
+.howItWorks {
+  padding: 80px 0;
+  background-color: $white;
+  @include md {
+    padding: 56px 0;
+  }
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 61px;
+  @include md {
+    margin-bottom: 42px;
+  }
+  @include sm {
+    margin-bottom: 26px;
+  }
+}
+
+.roadMap {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-bottom: 80px;
+
+  @include md {
+    margin-bottom: 56px;
+  }
+}
