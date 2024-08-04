@@ -1,0 +1,30 @@
+@use './breakpoints' as *;
+
+@mixin shadow-border($width: 2px, $color: transparent, $radius: 4px) {
+  border-radius: $radius;
+  box-shadow: 0px 0px 0px $width $color inset;
+}
+
+@mixin xs { // 320px
+  @media (max-width: map-get($breakpoints, "xs")) {
+    @content;
+  }
+}
+
+@mixin sm { // 375px
+  @media (max-width: map-get($breakpoints, "sm")) {
+    @content;
+  }
+}
+
+@mixin md { // 768px
+  @media (max-width: map-get($breakpoints, "md")) {
+    @content;
+  }
+}
+
+@mixin breakpoint($bp: 0) {
+  @media (max-width: $bp) {
+    @content;
+  }
+}

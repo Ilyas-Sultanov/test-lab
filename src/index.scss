@@ -1,9 +1,17 @@
+@use './styles/normalize.css';
+@use './styles/fonts';
+@use './styles/abstracts/' as *;
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  font-family: $font-family;
 }
 
 body {
@@ -28,4 +36,84 @@ h4,
 h5,
 h6 {
   font-weight: 600;
+}
+
+h1 {
+  font-size: 3.25rem;
+  line-height: 4rem;
+  @include md {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  @include sm {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+h2 {
+  font-size: 2.5rem;
+  line-height: 3.5rem;
+
+  @include sm {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+h3 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
+h6 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+input {
+  min-width: 0;
+  font-family: inherit;
+}
+
+#root {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 1 0%;
+}
+
+.container {
+  max-width: calc(1214px + $container-padding);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+
+  @include md {
+    max-width: calc(768px + $container-padding);
+  }
+
+  @include sm {
+    max-width: calc(375px + $container-padding);
+  }
+
+  @include xs {
+    max-width: calc(320px + $container-padding);
+  }
 }
