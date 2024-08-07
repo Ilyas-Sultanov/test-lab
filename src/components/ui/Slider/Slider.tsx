@@ -9,26 +9,47 @@ type Props = {
 
 export function SimpleSlider({ children }: Props) {
   const sliderRef = useRef(null)
+  const timerRef = useRef(0)
 
   function reziseSlickList() {
-    if (sliderRef.current) {
-      const sliderInstanse = sliderRef.current as Slider
-      const slickListEl = sliderInstanse.innerSlider?.list as HTMLDivElement
-      const currentSlide = slickListEl.querySelector('.slick-current') as HTMLDivElement
-      if (currentSlide) {
-        slickListEl.style.height = `${currentSlide.offsetHeight}px`
-      }
-    }
-  }
-
-  useEffect(() => {
     if (!sliderRef.current) {
       return
     }
+    const sliderInstanse = sliderRef.current as Slider
+    const slickListEl = sliderInstanse.innerSlider?.list as HTMLDivElement
+    
+    function getPreparedSlidesContent() {
+      const allSlidesContent = [...slickListEl.querySelectorAll('.slick-slide > div > div')] as Array<HTMLDivElement>
+      allSlidesContent.forEach((item) => item.style.height = '')
+      return allSlidesContent
+    }
+
+    clearTimeout(timerRef.current)
+    timerRef.current = setTimeout(() => {
+      const activeSlides = slickListEl.querySelectorAll('.slick-active')
+      const currentBreakpoint = (sliderInstanse.state as { breakpoint: null | number }).breakpoint
+      if (currentBreakpoint && currentBreakpoint < 768) {
+        getPreparedSlidesContent()
+        const currentSlide = activeSlides[0] as HTMLDivElement
+        slickListEl.style.height = `${currentSlide.offsetHeight}px`
+      } else {
+        const allSlidesContent = getPreparedSlidesContent()
+        const maxHeight = Math.max(...allSlidesContent.map((slide) => Number(getComputedStyle(slide).height.replace('px', ''))))
+        allSlidesContent.forEach((item: HTMLDivElement) => item.style.height = `${maxHeight}px`)
+        slickListEl.style.height = `${maxHeight + 20}px`
+      }
+    }, 100)
+  }
+
+  useEffect(() => {
     window.addEventListener('resize', reziseSlickList)
+    screen.orientation.addEventListener('change', () => {
+      reziseSlickList()
+    })
     reziseSlickList()
     return () => {
       window.removeEventListener('resize', reziseSlickList)
+      screen.orientation.removeEventListener('change', reziseSlickList)
     }
   }, [])
 
@@ -36,7 +57,6 @@ export function SimpleSlider({ children }: Props) {
     dots: true,
     infinite: true,
     speed: 500,
-    adaptiveHeight: true,
     slidesToShow: 3,
     slidesToScroll: 1,
     prevArrow: <SliderButton type='prev' />,
@@ -47,6 +67,7 @@ export function SimpleSlider({ children }: Props) {
       )
     },
     dotsClass: 'slick-dots slick-thumb',
+    afterChange: reziseSlickList,
     responsive: [
       {
         breakpoint: 1250,
@@ -66,7 +87,6 @@ export function SimpleSlider({ children }: Props) {
         settings: {
           slidesToShow: 1,
           arrows: false,
-          afterChange: reziseSlickList,
         },
       },
     ],

@@ -9,6 +9,10 @@
   row-gap: 30px;
   align-items: start;
 
+  @include sm {
+    row-gap: 20px;
+  }
+
   @include breakpoint(767px) {
     grid-template-columns: minmax(0, 384px);
   }
